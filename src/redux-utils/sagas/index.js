@@ -13,8 +13,9 @@ function* getShowsWorker(action) {
     try {
         console.log(action);
         const uri = getApi('getShows');
-        const { data } = yield axios.get(uri);
+        let { data } = yield axios.get(uri);
         console.log('This is the data from the server ', data);
+        data = data.map((item) => ({ ...item, isFavorite: false }));
         yield put(getShowsSuccess(data));
     } catch (err) {
         console.log('Something went wrong ', err);

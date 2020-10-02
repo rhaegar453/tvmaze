@@ -5,4 +5,13 @@ const getShows = createAction(types.getShows.request);
 const getShowsSuccess = createAction(types.getShows.success);
 const getShowsFailure = createAction(types.getShows.failure);
 
-export { getShows, getShowsSuccess, getShowsFailure };
+const makeFavoriteAction = createAction(types.makeFavorite.request);
+const removeFavoriteAction = createAction(types.removeFavorite.request);
+
+export {
+    getShows,
+    getShowsSuccess,
+    getShowsFailure,
+    makeFavoriteAction,
+    removeFavoriteAction
+};

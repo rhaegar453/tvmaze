@@ -23,6 +23,30 @@ const appReducer = createReducer(initialState, {
             action.payload
         );
         state.loading = false;
+    },
+    [types.makeFavorite.request]: (state, action) => {
+        const currentFavorite = [];
+        state.shows = state.shows.map((item) => {
+            if (item.id === action.payload) {
+                currentFavorite.push({ ...item, isFavorite: true });
+                return currentFavorite[0];
+            }
+            return item;
+        });
+        state.favorites = currentFavorite;
+    },
+    [types.removeFavorite.request]: (state, action) => {
+        console.log('Removing from favorites ', action);
+        state.shows = state.shows.map((item) => {
+            if (item.id === action.payload) {
+                return { ...item, isFavorite: false };
+            }
+
+            return item;
+        });
+        state.favorites = state.favorites.filter(
+            (item) => item.id !== action.payload
+        );
     }
 });
 

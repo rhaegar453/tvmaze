@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/mouse-events-have-key-events */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './ShowTile.css';
 import Pill from '../Pill/Pill';
@@ -20,9 +20,20 @@ HoveredMenu.propTypes = {
     onClick: PropTypes.func.isRequired
 };
 
-const ShowTile = ({ name, image, genres, status, type, summary, language }) => {
+const ShowTile = ({
+    id,
+    name,
+    image,
+    genres,
+    status,
+    type,
+    summary,
+    language,
+    makeFavorite,
+    removeFavorite,
+    isFavorite
+}) => {
     const manipulateTex = summary.length > 80 ? summary.slice(0, 80) : summary;
-    const [isFavorite, setFavorite] = useState(false);
     const [hasHovered, setHovered] = useState(false);
     return (
         <div
@@ -35,13 +46,13 @@ const ShowTile = ({ name, image, genres, status, type, summary, language }) => {
                     <RoundButton
                         icon={images.icons.Heart}
                         color="#22B893"
-                        onClick={() => setFavorite(true)}
+                        onClick={() => makeFavorite(id)}
                     />
                 ) : (
                     <RoundButton
                         icon={images.icons.Unfavorite}
                         color="#E37474"
-                        onClick={() => setFavorite(false)}
+                        onClick={() => removeFavorite(id)}
                     />
                 )}
             </div>
@@ -82,7 +93,11 @@ ShowTile.propTypes = {
     type: PropTypes.string.isRequired,
     summary: PropTypes.string.isRequired,
     language: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    makeFavorite: PropTypes.func.isRequired,
+    removeFavorite: PropTypes.func.isRequired,
+    isFavorite: PropTypes.bool.isRequired
 };
 
 export default ShowTile;

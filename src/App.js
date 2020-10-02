@@ -5,10 +5,14 @@ import { connect } from 'react-redux';
 import Lottie from 'react-lottie';
 import ShowTile from './Components/ShowTile/ShowTile';
 import { images } from './utils/images';
-import { getShows as getShowsA } from './redux-utils/actions/index';
+import {
+    getShows as getShowsA,
+    makeFavoriteAction,
+    removeFavoriteAction
+} from './redux-utils/actions/index';
 import { getLoadingSelector, getShowsSelector } from './redux-utils/selectors';
 
-const App = ({ getShows, shows, loading }) => {
+const App = ({ getShows, shows, loading, makeFavorite, removeFavorite }) => {
     const lottieConfig = {
         loop: true,
         autoplay: true,
@@ -26,6 +30,7 @@ const App = ({ getShows, shows, loading }) => {
                     <div>
                         {shows.map((item) => (
                             <ShowTile
+                                id={item.id}
                                 name={item.name}
                                 genres={item.genres}
                                 image={item.image.medium}
@@ -34,6 +39,13 @@ const App = ({ getShows, shows, loading }) => {
                                 summary={item.summary}
                                 type={item.type}
                                 key={item.id}
+                                makeFavorite={(data) => {
+                                    makeFavorite(data);
+                                }}
+                                removeFavorite={(data) => {
+                                    removeFavorite(data);
+                                }}
+                                isFavorite={item.isFavorite}
                             />
                         ))}
                     </div>
@@ -55,7 +67,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    getShows: () => dispatch(getShowsA())
+    getShows: () => dispatch(getShowsA()),
+    makeFavorite: (data) => dispatch(makeFavoriteAction(data)),
+    removeFavorite: (data) => dispatch(removeFavoriteAction(data))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
