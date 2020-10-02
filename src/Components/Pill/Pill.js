@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Pill.css';
+import { pure } from 'recompose';
 
 const Pill = ({ text, color, textColor = 'white', style }) => (
     <div className="pill" style={{ backgroundColor: color, ...style }}>
@@ -22,4 +23,4 @@ Pill.defaultProps = {
     style: {}
 };
 
-export default Pill;
+export default pure(Pill);

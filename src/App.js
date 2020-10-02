@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import './App.css';
 import { connect } from 'react-redux';
 import Lottie from 'react-lottie';
+import { pure } from 'recompose';
 import ShowTile from './Components/ShowTile/ShowTile';
 import { images } from './utils/images';
+
 import {
     getShows as getShowsA,
     makeFavoriteAction,
@@ -58,7 +60,9 @@ const App = ({ getShows, shows, loading, makeFavorite, removeFavorite }) => {
 App.propTypes = {
     getShows: PropTypes.func.isRequired,
     shows: PropTypes.array.isRequired,
-    loading: PropTypes.bool.isRequired
+    loading: PropTypes.bool.isRequired,
+    makeFavorite: PropTypes.func.isRequired,
+    removeFavorite: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -72,4 +76,4 @@ const mapDispatchToProps = (dispatch) => ({
     removeFavorite: (data) => dispatch(removeFavoriteAction(data))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(pure(App));

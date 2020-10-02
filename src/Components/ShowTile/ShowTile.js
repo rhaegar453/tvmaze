@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './ShowTile.css';
+import { pure } from 'recompose';
 import Pill from '../Pill/Pill';
 import RoundButton from '../RoundButton/RoundButton';
 import { images } from '../../utils/images';
@@ -100,4 +101,4 @@ ShowTile.propTypes = {
     isFavorite: PropTypes.bool.isRequired
 };
 
-export default ShowTile;
+export default pure(ShowTile);

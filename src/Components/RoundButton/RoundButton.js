@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './RoundButton.css';
+import { pure } from 'recompose';
 
 const RoundButton = ({ icon, color, onClick }) => (
     <div
@@ -23,4 +24,4 @@ RoundButton.propTypes = {
     onClick: PropTypes.func.isRequired
 };
 
-export default RoundButton;
+export default pure(RoundButton);

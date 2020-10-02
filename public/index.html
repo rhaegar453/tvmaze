@@ -37,5 +37,11 @@
             integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
             crossorigin="anonymous"
         ></script>
+        <script>
+            $('#myModal').on('shown.bs.modal', function () {
+                console.log('called the modal');
+                $('#myInput').trigger('focus');
+            });
+        </script>
     </body>
 </html>
