@@ -2,8 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './ShowTile.css';
 import * as _ from 'lodash';
+import Pill from '../Pill/Pill';
 
-const ShowTile = ({}) => (
+const genres = ['Drama', 'Comedy', 'Family'];
+
+const ShowTile = () => (
     <div className="showTile">
         <div>
             <img
@@ -16,13 +19,20 @@ const ShowTile = ({}) => (
             />
         </div>
         <div className="boxContainer">
-            <p className="showTitle">Show Name</p>
+            <div style={{ display: 'flex' }}>
+                <p className="showTitle">Show Name</p>
+                <Pill
+                    text="Reality"
+                    color="#FB9E13"
+                    style={{ marginLeft: 10 }}
+                />
+            </div>
             <p className="showSummary">
                 Here is where we'll be having the summary of the tv show
             </p>
             <p className="showLanguage">English</p>
-            {_.times(3, (i) => (
-                <p style={{ display: 'inline-block' }}>English{i}</p>
+            {genres.map((item) => (
+                <Pill text={item} color="#532EE3" />
             ))}
         </div>
     </div>

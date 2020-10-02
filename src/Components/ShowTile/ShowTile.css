@@ -18,10 +18,11 @@
 
 .showSummary {
     font-size: 10px;
+    color: #959595 !important;
 }
 
 .showLanguage {
-    font-size: 12px;
+    font-size: 10px;
     font-weight: bold;
     margin-top: 5px !important;
 }

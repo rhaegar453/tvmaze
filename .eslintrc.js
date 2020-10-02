@@ -41,6 +41,7 @@ module.exports = {
         'react/jsx-one-expression-per-line': [0],
         'comma-dangle': [0],
         'jsx-a11y/alt-text': [0],
+        'object-curly-newline': [0],
         quotes: [
             'error',
             'single',
