@@ -16,6 +16,10 @@ const HoveredMenu = ({ onClick }) => (
     </div>
 );
 
+HoveredMenu.propTypes = {
+    onClick: PropTypes.func.isRequired
+};
+
 const ShowTile = ({ name, image, genres, status, type, summary, language }) => {
     const manipulateTex = summary.length > 80 ? summary.slice(0, 80) : summary;
     const [isFavorite, setFavorite] = useState(false);
