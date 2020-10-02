@@ -3,7 +3,6 @@ import { createReducer, combineReducers } from '@reduxjs/toolkit';
 import types from '../types';
 
 /* import the reducers here and export them as default */
-
 const initialState = {
     shows: [],
     favorites: [],
@@ -12,12 +11,11 @@ const initialState = {
 
 const appReducer = createReducer(initialState, {
     [types.getShows.request]: (state) => {
-        console.log('Getting the user data');
         state.loading = true;
     },
     [types.getShows.success]: (state, action) => {
-        console.log('Successfully got the user data ', action.payload);
         state.loading = false;
+        state.shows = action.payload;
     },
     [types.getShows.failure]: (state, action) => {
         console.log(

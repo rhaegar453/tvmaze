@@ -1,8 +1,8 @@
 import { createAction } from '@reduxjs/toolkit';
 import types from '../types';
 
-const getStore = createAction(types.getShows.request);
-const getStoreSuccess = createAction(types.getShows.success);
-const getStoreFailure = createAction(types.getShows.failure);
+const getShows = createAction(types.getShows.request);
+const getShowsSuccess = createAction(types.getShows.success);
+const getShowsFailure = createAction(types.getShows.failure);
 
-export { getStore, getStoreSuccess, getStoreFailure };
+export { getShows, getShowsSuccess, getShowsFailure };

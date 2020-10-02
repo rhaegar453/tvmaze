@@ -1,42 +1,61 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import ShowTile from './Components/ShowTile/ShowTile';
 import './App.css';
-import RoundButton from './Components/RoundButton/RoundButton';
+import { connect } from 'react-redux';
+import Lottie from 'react-lottie';
+import ShowTile from './Components/ShowTile/ShowTile';
 import { images } from './utils/images';
+import { getShows as getShowsA } from './redux-utils/actions/index';
+import { getLoadingSelector, getShowsSelector } from './redux-utils/selectors';
 
-const App = () => {
-    const [shows, setShows] = useState([]);
-    const [loading, setLoading] = useState([]);
+const App = ({ getShows, shows, loading }) => {
+    const lottieConfig = {
+        loop: true,
+        autoplay: true,
+        animationData: images.lottie.Loading
+    };
     useEffect(() => {
-        setLoading(true);
-        axios.get('http://api.tvmaze.com/shows?page=1').then((data) => {
-            console.log(data.data);
-            setShows(data.data);
-            setLoading(false);
-        });
+        getShows();
     }, []);
     return (
         <div>
             <div className="container">
-                {shows.map((item) => (
-                    <ShowTile
-                        name={item.name}
-                        genres={item.genres}
-                        image={item.image.medium}
-                        language={item.language}
-                        status={item.status}
-                        summary={item.summary}
-                        type={item.type}
-                        key={item.id}
-                    />
-                ))}
+                {loading ? (
+                    <Lottie options={lottieConfig} height={400} />
+                ) : (
+                    <div>
+                        {shows.map((item) => (
+                            <ShowTile
+                                name={item.name}
+                                genres={item.genres}
+                                image={item.image.medium}
+                                language={item.language}
+                                status={item.status}
+                                summary={item.summary}
+                                type={item.type}
+                                key={item.id}
+                            />
+                        ))}
+                    </div>
+                )}
             </div>
         </div>
     );
 };
 
-App.propTypes = {};
+App.propTypes = {
+    getShows: PropTypes.func.isRequired,
+    shows: PropTypes.array.isRequired,
+    loading: PropTypes.bool.isRequired
+};
 
-export default App;
+const mapStateToProps = (state) => ({
+    shows: getShowsSelector(state),
+    loading: getLoadingSelector(state)
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    getShows: () => dispatch(getShowsA())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
