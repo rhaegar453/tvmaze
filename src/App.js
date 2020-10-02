@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ShowTile from './Components/ShowTile/ShowTile';
+import './App.css';
 
 const App = () => (
     <div>
-        <h1>Hello World this is Shivaraj Bakale</h1>
+        <ShowTile />
     </div>
 );
 
