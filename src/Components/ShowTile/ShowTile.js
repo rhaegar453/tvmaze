@@ -45,7 +45,7 @@ const ShowTile = ({ name, image, genres, status, type, summary, language }) => {
                     />
                 )}
             </div>
-            <div>
+            <div style={{ maxHeight: 300, overflow: 'hidden' }}>
                 <img src={image} className="image" />
                 {hasHovered ? <HoveredMenu /> : null}
             </div>
