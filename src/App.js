@@ -3,6 +3,8 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import ShowTile from './Components/ShowTile/ShowTile';
 import './App.css';
+import RoundButton from './Components/RoundButton/RoundButton';
+import { images } from './utils/images';
 
 const App = () => {
     const [shows, setShows] = useState([]);
@@ -17,19 +19,20 @@ const App = () => {
     }, []);
     return (
         <div>
-            <h1>Hello World</h1>
-            {shows.map((item) => (
-                <ShowTile
-                    name={item.name}
-                    genres={item.genres}
-                    image={item.image.medium}
-                    language={item.language}
-                    status={item.status}
-                    summary={item.summary}
-                    type={item.type}
-                    key={item.id}
-                />
-            ))}
+            <div className="container">
+                {shows.map((item) => (
+                    <ShowTile
+                        name={item.name}
+                        genres={item.genres}
+                        image={item.image.medium}
+                        language={item.language}
+                        status={item.status}
+                        summary={item.summary}
+                        type={item.type}
+                        key={item.id}
+                    />
+                ))}
+            </div>
         </div>
     );
 };

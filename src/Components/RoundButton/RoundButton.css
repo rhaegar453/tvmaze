@@ -1,0 +1,19 @@
+.roundButton {
+    padding: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.iconContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+}
+
+.roundButton:hover {
+    filter: contrast(1.2);
+    transition: 0.3s;
+}
