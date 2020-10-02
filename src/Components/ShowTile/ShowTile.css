@@ -5,6 +5,8 @@
     border: 1px solid #dedfe1;
     display: inline-block;
     max-width: 300px !important;
+    position: relative;
+    margin: 20px;
 }
 
 .showTitle {
@@ -25,4 +27,17 @@
     font-size: 10px;
     font-weight: bold;
     margin-top: 5px !important;
+}
+
+.image {
+    min-width: 300px !important;
+    border-radius: 20px;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.statusButton {
+    position: absolute;
+    right: 8px;
+    top: 8px;
 }

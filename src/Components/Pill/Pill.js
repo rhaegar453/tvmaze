@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Pill.css';
 
-const Pill = ({ text, color, textColor, style }) => (
+const Pill = ({ text, color, textColor = 'white', style }) => (
     <div className="pill" style={{ backgroundColor: color, ...style }}>
-        <span style={{ color: textColor }}>{text}</span>
+        <div>
+            <span style={{ color: textColor }}>{text}</span>
+        </div>
     </div>
 );
 
