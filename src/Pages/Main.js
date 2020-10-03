@@ -17,7 +17,14 @@ import { getLoadingSelector, getShowsSelector } from '../redux-utils/selectors';
 import Modal from '../Components/Modal/Modal';
 import ShowDetails from '../Components/ShowDetails/ShowDetails';
 
-const Main = ({ getShows, shows, loading, makeFavorite, removeFavorite }) => {
+const Main = ({
+    getShows,
+    shows,
+    loading,
+    makeFavorite,
+    removeFavorite,
+    history
+}) => {
     const lottieConfig = {
         loop: true,
         autoplay: true,
@@ -40,6 +47,9 @@ const Main = ({ getShows, shows, loading, makeFavorite, removeFavorite }) => {
             action === 'remove' ? removeFavorite(id) : makeFavorite(id);
             return { ...value, isFavorite: action !== 'remove' };
         });
+    };
+    const goToFavorites = () => {
+        history.push('/favorite');
     };
 
     return (
@@ -68,6 +78,15 @@ const Main = ({ getShows, shows, loading, makeFavorite, removeFavorite }) => {
                 ) : null}
             </Modal>
             <div className="container">
+                <div style={{ textAlign: 'right' }}>
+                    <button
+                        className="btn btn-primary"
+                        type="button"
+                        onClick={goToFavorites}
+                    >
+                        Go to Favorites
+                    </button>
+                </div>
                 {loading ? (
                     <Lottie options={lottieConfig} height={400} />
                 ) : (

@@ -64,9 +64,11 @@ const ShowDetails = ({
                         <p>
                             Schedule : <span>{JSON.stringify(schedule)}</span>
                         </p>
-                        <p>
-                            Rating : <span>{rating}</span>
-                        </p>
+                        {rating ? (
+                            <p>
+                                Rating : <span>{rating}</span>
+                            </p>
+                        ) : null}
                         <p>
                             Network : <span>{network}</span>
                         </p>

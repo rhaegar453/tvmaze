@@ -77,6 +77,20 @@ p {
 
 .btn {
     margin: 5px !important;
+    border-radius: 20px;
+    background-color: #532ee3 !important;
+    border-color: none !important;
+}
+.btn:focus {
+    border-color: none !important;
+}
+.btn-primary:focus {
+    border-color: none !important;
+    box-shadow: none !important;
+}
+.btn-primary {
+    border-color: none !important;
+    border-width: 0px !important;
 }
 
 .close {
