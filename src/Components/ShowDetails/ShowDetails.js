@@ -4,6 +4,7 @@ import Pill from '../Pill/Pill';
 import './ShowDetails.css';
 
 const ShowDetails = ({
+    id,
     title,
     summary,
     image,
@@ -17,7 +18,9 @@ const ShowDetails = ({
     rating,
     network,
     url,
-    isFavorite
+    isFavorite,
+    addFavorite,
+    removeFavorite
 }) => {
     const openUrl = () => {
         window.open(url);
@@ -89,6 +92,7 @@ const ShowDetails = ({
                                     <button
                                         className="btn btn-primary"
                                         type="button"
+                                        onClick={() => addFavorite(id, 'add')}
                                     >
                                         Make Favorite
                                     </button>
@@ -96,6 +100,9 @@ const ShowDetails = ({
                                     <button
                                         className="btn btn-primary"
                                         type="button"
+                                        onClick={() =>
+                                            removeFavorite(id, 'remove')
+                                        }
                                     >
                                         Remove Favorite
                                     </button>
@@ -123,7 +130,10 @@ ShowDetails.propTypes = {
     rating: PropTypes.string.isRequired,
     network: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
-    isFavorite: PropTypes.bool.isRequired
+    isFavorite: PropTypes.bool.isRequired,
+    id: PropTypes.number.isRequired,
+    addFavorite: PropTypes.func.isRequired,
+    removeFavorite: PropTypes.func.isRequired
 };
 
 export default ShowDetails;

@@ -12,16 +12,14 @@ const Modal = ({ modalId, children }) => (
     >
         <div className="modal-dialog modal-lg" role="document">
             <div className="modal-content">
-                <div className="modal-header">
-                    <button
-                        type="button"
-                        className="close"
-                        data-dismiss="modal"
-                        aria-label="Close"
-                    >
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+                <button
+                    type="button"
+                    className="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                >
+                    <span aria-hidden="true">&times;</span>
+                </button>
                 <div className="modal-body">{children}</div>
             </div>
         </div>

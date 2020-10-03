@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './App.css';
@@ -13,7 +14,7 @@ import {
     removeFavoriteAction
 } from './redux-utils/actions/index';
 import { getLoadingSelector, getShowsSelector } from './redux-utils/selectors';
-import Modal, { ModalButton } from './Components/Modal/Modal';
+import Modal from './Components/Modal/Modal';
 import ShowDetails from './Components/ShowDetails/ShowDetails';
 
 const App = ({ getShows, shows, loading, makeFavorite, removeFavorite }) => {
@@ -32,15 +33,21 @@ const App = ({ getShows, shows, loading, makeFavorite, removeFavorite }) => {
     useEffect(() => {
         getShows();
     }, []);
-
-    const first = shows.length > 0 ? shows[0] : null;
     const [currentView, setCurrentView] = useState(null);
+    const toggleFavorite = (id, action) => {
+        setCurrentView((value) => {
+            console.log('This is the value ', value);
+            action === 'remove' ? removeFavorite(id) : makeFavorite(id);
+            return { ...value, isFavorite: action !== 'remove' };
+        });
+    };
 
     return (
         <div>
             <Modal modalId="modal">
                 {currentView && currentView.id ? (
                     <ShowDetails
+                        id={currentView.id}
                         title={currentView.name}
                         genre={currentView.genres}
                         summary={currentView.summary}
@@ -55,6 +62,8 @@ const App = ({ getShows, shows, loading, makeFavorite, removeFavorite }) => {
                         type={currentView.type}
                         url={currentView.officialSite}
                         isFavorite={currentView.isFavorite}
+                        addFavorite={toggleFavorite}
+                        removeFavorite={toggleFavorite}
                     />
                 ) : null}
             </Modal>
@@ -110,4 +119,4 @@ const mapDispatchToProps = (dispatch) => ({
     removeFavorite: (data) => dispatch(removeFavoriteAction(data))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(pure(App));
