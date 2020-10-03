@@ -15,75 +15,99 @@ const ShowDetails = ({
     lastPremiered,
     schedule,
     rating,
-    network
-}) => (
-    <div className="showDetails container">
-        <h2 className="detailsTitle">{title}</h2>
-        <div className="row" style={{ marginTop: 20 }}>
-            <div className="col-md-6">
-                <p className="summaryText">{summary}</p>
-                <hr />
-                <div className="info">
-                    <p>
-                        Type : <span>{type}</span>
-                    </p>
-                    <p>
-                        Language : <span>{language}</span>
-                    </p>
-                    <p>
-                        Genre :{' '}
-                        <span>
-                            {genre.map((item) => (
-                                <Pill
-                                    text={item}
-                                    color="#532EE3"
-                                    textColor="white"
-                                />
-                            ))}
-                        </span>
-                    </p>
-                    <p>
-                        Status : <span>{status}</span>
-                    </p>
-                    <p>
-                        Runtime : <span>{runtime} minutes</span>
-                    </p>
-                    <p>
-                        Last Premiered : <span>{lastPremiered}</span>
-                    </p>
-                    <p>
-                        Schedule : <span>{JSON.stringify(schedule)}</span>
-                    </p>
-                    <p>
-                        Rating : <span>{rating}</span>
-                    </p>
-                    <p>
-                        Network : <span>{network}</span>
-                    </p>
+    network,
+    url,
+    isFavorite
+}) => {
+    const openUrl = () => {
+        window.open(url);
+    };
+    return (
+        <div className="showDetails container">
+            <h2 className="detailsTitle">{title}</h2>
+            <div className="row" style={{ marginTop: 20 }}>
+                <div className="col-md-6">
+                    <p className="summaryText">{summary}</p>
+                    <hr />
+                    <div className="info">
+                        <p>
+                            Type : <span>{type}</span>
+                        </p>
+                        <p>
+                            Language : <span>{language}</span>
+                        </p>
+                        <p>
+                            Genre :{' '}
+                            <span>
+                                {genre.map((item) => (
+                                    <Pill
+                                        text={item}
+                                        color="#532EE3"
+                                        textColor="white"
+                                    />
+                                ))}
+                            </span>
+                        </p>
+                        <p>
+                            Status : <span>{status}</span>
+                        </p>
+                        <p>
+                            Runtime : <span>{runtime} minutes</span>
+                        </p>
+                        <p>
+                            Last Premiered : <span>{lastPremiered}</span>
+                        </p>
+                        <p>
+                            Schedule : <span>{JSON.stringify(schedule)}</span>
+                        </p>
+                        <p>
+                            Rating : <span>{rating}</span>
+                        </p>
+                        <p>
+                            Network : <span>{network}</span>
+                        </p>
+                    </div>
+                </div>
+                <div
+                    className="col-md-6"
+                    style={{ display: 'flex', justifyContent: 'center' }}
+                >
+                    <div>
+                        <img src={image} className="image" />
+                        <div className="buttonContainer">
+                            <div>
+                                <button
+                                    className="btn btn-primary"
+                                    type="button"
+                                    onClick={openUrl}
+                                >
+                                    Visit Official Site
+                                </button>
+                            </div>
+                            <div>
+                                {!isFavorite ? (
+                                    <button
+                                        className="btn btn-primary"
+                                        type="button"
+                                    >
+                                        Make Favorite
+                                    </button>
+                                ) : (
+                                    <button
+                                        className="btn btn-primary"
+                                        type="button"
+                                    >
+                                        Remove Favorite
+                                    </button>
+                                )}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div
-                className="col-md-6"
-                style={{ display: 'flex', justifyContent: 'center' }}
-            >
-                <img src={image} className="image" />
-            </div>
         </div>
-
-        <div className="buttonContainer">
-            <div>
-                <button className="btn btn-primary" type="button">
-                    Visit Official Site
-                </button>
-            </div>
-            <div>
-                <button className="btn btn-primary" type="button">
-                    Make Favorite
-                </button>
-            </div>
-        </div>
-    </div>
-);
+    );
+};
 
 ShowDetails.propTypes = {};
 

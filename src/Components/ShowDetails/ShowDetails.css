@@ -3,6 +3,7 @@
     color: white !important;
     background-color: #222222;
     padding: 20px;
+    overflow: scroll;
 }
 
 .image {
@@ -25,6 +26,8 @@
 
 .summaryText {
     color: white !important;
+    max-height: 400px;
+    overflow: scroll;
 }
 
 hr {

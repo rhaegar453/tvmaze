@@ -50,6 +50,9 @@ p {
     background-color: #2f2f2f;
     border: 2px solid #959595;
     color: #e9e7ff;
+    border: 1px solid #959595;
+    height: 80vh;
+    overflow: scroll;
 }
 
 .close {

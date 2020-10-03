@@ -6,13 +6,18 @@ import { pure } from 'recompose';
 import Pill from '../Pill/Pill';
 import RoundButton from '../RoundButton/RoundButton';
 import { images } from '../../utils/images';
+import { ModalButton } from '../Modal/Modal';
 
 const HoveredMenu = ({ onClick }) => (
     <div className="hoverMenu">
         <div>
-            <button className="btn btn-primary" type="button" onClick={onClick}>
+            <ModalButton
+                className="btn btn-primary"
+                modalId="modal"
+                onClick={onClick}
+            >
                 View Details
-            </button>
+            </ModalButton>
         </div>
     </div>
 );
@@ -32,7 +37,8 @@ const ShowTile = ({
     language,
     makeFavorite,
     removeFavorite,
-    isFavorite
+    isFavorite,
+    openDetails
 }) => {
     const manipulateTex = summary.length > 80 ? summary.slice(0, 80) : summary;
     const [hasHovered, setHovered] = useState(false);
@@ -59,7 +65,9 @@ const ShowTile = ({
             </div>
             <div style={{ maxHeight: 300, overflow: 'hidden' }}>
                 <img src={image} className="image" />
-                {hasHovered ? <HoveredMenu /> : null}
+                {hasHovered ? (
+                    <HoveredMenu onClick={() => openDetails(id)} />
+                ) : null}
             </div>
             <div className="statusButton">
                 <Pill text={status} color="#36EBBF" textColor="#3F3D56" />

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './App.css';
 import { connect } from 'react-redux';
@@ -22,30 +22,42 @@ const App = ({ getShows, shows, loading, makeFavorite, removeFavorite }) => {
         autoplay: true,
         animationData: images.lottie.Loading
     };
+
+    const openCurrentShowDetails = (data) => {
+        console.log(data);
+        setCurrentView(null);
+        const currShow = shows.filter((item) => item.id === data)[0];
+        setCurrentView(currShow);
+    };
     useEffect(() => {
         getShows();
     }, []);
 
     const first = shows.length > 0 ? shows[0] : null;
-    console.log('This is the first ', first);
+    const [currentView, setCurrentView] = useState(null);
+
     return (
         <div>
-            {first && first.id ? (
-                <ShowDetails
-                    title={first.name}
-                    genre={first.genres}
-                    summary={first.summary}
-                    image={first.image.medium}
-                    language={first.language}
-                    lastPremiered={first.premiered}
-                    network={first.network.name}
-                    rating={first.rating.average}
-                    runtime={first.runtime}
-                    schedule={first.schedule.time}
-                    status={first.status}
-                    type={first.type}
-                />
-            ) : null}
+            <Modal modalId="modal">
+                {currentView && currentView.id ? (
+                    <ShowDetails
+                        title={currentView.name}
+                        genre={currentView.genres}
+                        summary={currentView.summary}
+                        image={currentView.image.medium}
+                        language={currentView.language}
+                        lastPremiered={currentView.premiered}
+                        network={currentView.network.name}
+                        rating={currentView.rating.average}
+                        runtime={currentView.runtime}
+                        schedule={currentView.schedule.time}
+                        status={currentView.status}
+                        type={currentView.type}
+                        url={currentView.officialSite}
+                        isFavorite={currentView.isFavorite}
+                    />
+                ) : null}
+            </Modal>
             <div className="container">
                 {loading ? (
                     <Lottie options={lottieConfig} height={400} />
@@ -69,6 +81,7 @@ const App = ({ getShows, shows, loading, makeFavorite, removeFavorite }) => {
                                     removeFavorite(data);
                                 }}
                                 isFavorite={item.isFavorite}
+                                openDetails={openCurrentShowDetails}
                             />
                         ))}
                     </div>

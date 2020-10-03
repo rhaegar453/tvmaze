@@ -14,9 +14,6 @@ const Modal = ({ modalId, title, children }) => (
         <div className="modal-dialog modal-lg" role="document">
             <div className="modal-content">
                 <div className="modal-header">
-                    <h5 className="modal-title" id="exampleModalLabel">
-                        {title}
-                    </h5>
                     <button
                         type="button"
                         className="close"
