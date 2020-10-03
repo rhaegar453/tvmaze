@@ -42,6 +42,7 @@ module.exports = {
         'comma-dangle': [0],
         'jsx-a11y/alt-text': [0],
         'object-curly-newline': [0],
+        'implicit-arrow-linebreak': [0],
         quotes: [
             'error',
             'single',
