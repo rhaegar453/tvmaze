@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { rest } from 'lodash';
 
-const Modal = ({ modalId }) => (
+const Modal = ({ modalId, title, children }) => (
     <div
         className="modal fade"
         id={modalId}
@@ -10,11 +11,11 @@ const Modal = ({ modalId }) => (
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
     >
-        <div className="modal-dialog" role="document">
+        <div className="modal-dialog modal-lg" role="document">
             <div className="modal-content">
                 <div className="modal-header">
                     <h5 className="modal-title" id="exampleModalLabel">
-                        Modal title
+                        {title}
                     </h5>
                     <button
                         type="button"
@@ -25,19 +26,7 @@ const Modal = ({ modalId }) => (
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div className="modal-body">...</div>
-                <div className="modal-footer">
-                    <button
-                        type="button"
-                        className="btn btn-secondary"
-                        data-dismiss="modal"
-                    >
-                        Close
-                    </button>
-                    <button type="button" className="btn btn-primary">
-                        Save changes
-                    </button>
-                </div>
+                <div className="modal-body">{children}</div>
             </div>
         </div>
     </div>
@@ -45,9 +34,16 @@ const Modal = ({ modalId }) => (
 
 Modal.propTypes = {};
 
-export const modalButton = (Component) => (props) => (
-    // eslint-disable-next-line react/prop-types
-    <Component data-toggle="modal" data-target={props.modalId} {...props} />
+export const ModalButton = ({ className, modalId, children, ...rest }) => (
+    <button
+        data-toggle="modal"
+        data-target={`#${modalId}`}
+        {...rest}
+        className={className}
+        type="button"
+    >
+        {children}
+    </button>
 );
 
 export default Modal;

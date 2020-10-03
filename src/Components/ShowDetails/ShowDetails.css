@@ -1,0 +1,32 @@
+.showDetails {
+    border-radius: 20px;
+    color: white !important;
+    background-color: #222222;
+    padding: 20px;
+}
+
+.image {
+    border-radius: 20px;
+}
+
+.detailsTitle {
+    text-align: center;
+}
+
+.buttonContainer {
+    display: block;
+    text-align: center;
+    margin-top: 20;
+}
+
+.info > * {
+    color: white !important;
+}
+
+.summaryText {
+    color: white !important;
+}
+
+hr {
+    background-color: white;
+}

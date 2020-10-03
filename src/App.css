@@ -44,3 +44,34 @@ p {
         transform: rotate(360deg);
     }
 }
+
+.modal-content {
+    border-radius: 20px;
+    background-color: #2f2f2f;
+    border: 2px solid #959595;
+    color: #e9e7ff;
+}
+
+.close {
+    color: white;
+}
+
+.close:hover {
+    color: white;
+}
+
+.modal-header {
+    border-bottom: 1px solid #51585f;
+}
+
+.modal-footer {
+    border-top: 0.5px solid #51585f;
+}
+
+.modal-title {
+    color: #e9e7ff;
+}
+
+.btn {
+    margin: 5px !important;
+}
