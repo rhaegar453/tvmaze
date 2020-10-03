@@ -76,9 +76,9 @@ p {
 }
 
 .btn {
-    margin: 5px !important;
+    margin: 5px;
     border-radius: 20px;
-    background-color: #532ee3 !important;
+    background-color: #532ee3;
     border-color: none !important;
 }
 .btn:focus {
@@ -98,4 +98,26 @@ p {
     flex-direction: row-reverse;
     padding-right: 20px !important;
     padding-top: 5px !important;
+}
+
+.centeredCss {
+    display: flex;
+    justify-content: center;
+}
+
+.favoritesContainer {
+    height: 90vh;
+    overflow: scroll;
+}
+
+.logoImage {
+    height: 50px;
+    cursor: pointer;
+}
+
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    margin-bottom: 20px;
 }

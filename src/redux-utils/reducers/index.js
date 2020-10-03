@@ -33,7 +33,7 @@ const appReducer = createReducer(initialState, {
             }
             return item;
         });
-        state.favorites = currentFavorite;
+        state.favorites = [...state.favorites, currentFavorite[0]];
     },
     [types.removeFavorite.request]: (state, action) => {
         console.log('Removing from favorites ', action);

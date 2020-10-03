@@ -1,6 +1,8 @@
 /* Icons */
 import Heart from '../assets/icons/favorite.svg';
 import Unfavorite from '../assets/icons/unfavorite.svg';
+import Background from '../assets/icons/background.png';
+import Logo from '../assets/icons/Logo.svg';
 
 /* Lotties */
 import Television from '../assets/lotties/television.json';
@@ -10,7 +12,9 @@ import Loading from '../assets/lotties/Loading.json';
 const images = {
     icons: {
         Heart,
-        Unfavorite
+        Unfavorite,
+        Background,
+        Logo
     },
     lottie: {
         Television,

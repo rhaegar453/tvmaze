@@ -1,0 +1,35 @@
+.favoriteItem {
+    background-color: #222222;
+    border-radius: 20px;
+    color: white;
+    border: 1px solid #959595;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.summaryPara {
+    font-size: 10px;
+    color: #bbbaba !important;
+}
+
+.genres {
+    margin-top: 10px;
+}
+
+.btn-remove {
+    background-color: #d45252 !important;
+    font-size: 10px;
+    color: white;
+}
+
+.genreContainer {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20;
+}
+
+.favoriteImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
