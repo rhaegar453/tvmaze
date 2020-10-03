@@ -54,7 +54,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 Favorite.propTypes = {
-    loading: PropTypes.bool.isRequired,
     favorites: PropTypes.array.isRequired,
     removeFavorite: PropTypes.func.isRequired
 };

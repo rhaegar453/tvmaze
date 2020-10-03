@@ -1,5 +1,5 @@
 const urls = {
-    getShows: 'http://api.tvmaze.com/shows?page=1'
+    getShows: 'https://api.tvmaze.com/shows?page=1'
 };
 
 export const getApi = (name) => urls[name];
