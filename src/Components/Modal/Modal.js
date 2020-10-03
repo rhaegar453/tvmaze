@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { rest } from 'lodash';
 
-const Modal = ({ modalId, title, children }) => (
+const Modal = ({ modalId, children }) => (
     <div
         className="modal fade"
         id={modalId}
@@ -29,7 +28,10 @@ const Modal = ({ modalId, title, children }) => (
     </div>
 );
 
-Modal.propTypes = {};
+Modal.propTypes = {
+    modalId: PropTypes.string.isRequired,
+    children: PropTypes.any.isRequired
+};
 
 export const ModalButton = ({ className, modalId, children, ...rest }) => (
     <button
@@ -42,5 +44,11 @@ export const ModalButton = ({ className, modalId, children, ...rest }) => (
         {children}
     </button>
 );
+
+ModalButton.propTypes = {
+    className: PropTypes.string.isRequired,
+    modalId: PropTypes.string.isRequired,
+    children: PropTypes.any.isRequired
+};
 
 export default Modal;

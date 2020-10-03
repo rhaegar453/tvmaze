@@ -106,7 +106,8 @@ ShowTile.propTypes = {
     id: PropTypes.string.isRequired,
     makeFavorite: PropTypes.func.isRequired,
     removeFavorite: PropTypes.func.isRequired,
-    isFavorite: PropTypes.bool.isRequired
+    isFavorite: PropTypes.bool.isRequired,
+    openDetails: PropTypes.func.isRequired
 };
 
 export default pure(ShowTile);

@@ -109,6 +109,21 @@ const ShowDetails = ({
     );
 };
 
-ShowDetails.propTypes = {};
+ShowDetails.propTypes = {
+    title: PropTypes.string.isRequired,
+    summary: PropTypes.string.isRequired,
+    image: PropTypes.any.isRequired,
+    type: PropTypes.string.isRequired,
+    language: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    status: PropTypes.string.isRequired,
+    runtime: PropTypes.string.isRequired,
+    lastPremiered: PropTypes.string.isRequired,
+    schedule: PropTypes.string.isRequired,
+    rating: PropTypes.string.isRequired,
+    network: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    isFavorite: PropTypes.bool.isRequired
+};
 
 export default ShowDetails;
